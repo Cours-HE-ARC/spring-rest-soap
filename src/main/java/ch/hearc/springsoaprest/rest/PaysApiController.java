@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class RestApiController {
+public class PaysApiController {
 
     private PaysRepository paysRepository;
 
-    public RestApiController(PaysRepository paysRepository){
+    public PaysApiController(PaysRepository paysRepository){
         this.paysRepository = paysRepository;
     }
 
