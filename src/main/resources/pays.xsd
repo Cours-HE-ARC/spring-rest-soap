@@ -1,0 +1,73 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://hearc.ch/springsoaprest/soap"
+           xmlns:s="http://www.w3.org/2001/XMLSchema" targetNamespace="http://hearc.ch/springsoaprest/soap"
+           elementFormDefault="qualified">
+
+    <!-- get pays bi iso code -->
+    <xs:element name="getPaysByCodeRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="isoCode" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getPaysByCodeResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="pays" type="tns:pays"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- get all pays -->
+    <xs:element name="getAllPaysRequest">
+        <xs:complexType>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="getAllPaysResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="pays" type="tns:pays" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- insert new pays -->
+    <xs:element name="addPaysRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="pays" type="tns:pays"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addPaysResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="message" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+
+
+    <xs:complexType name="pays">
+        <xs:sequence>
+            <xs:element name="isoCode" type="xs:string"/>
+            <xs:element name="nom" type="xs:string"/>
+            <xs:element name="population" type="xs:int"/>
+            <xs:element name="capitale" type="xs:string"/>
+            <xs:element name="monnaie" type="tns:monnaie"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:simpleType name="monnaie">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="GBP"/>
+            <xs:enumeration value="EUR"/>
+            <xs:enumeration value="PLN"/>
+            <xs:enumeration value="CHF"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
