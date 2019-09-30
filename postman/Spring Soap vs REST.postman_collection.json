@@ -1,0 +1,192 @@
+{
+	"info": {
+		"_postman_id": "d524f0aa-9c7b-4570-adfd-c5bbf43f9269",
+		"name": "Spring Soap vs REST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "SOAP allPays",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "text/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:soap=\"http://hearc.ch/springsoaprest/soap\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <soap:getAllPaysRequest/>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/ws/pays.wsdl",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ws",
+						"pays.wsdl"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SOAP paysByIsoCode",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "text/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:soap=\"http://hearc.ch/springsoaprest/soap\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <soap:getPaysByCodeRequest>\r\n         <soap:isoCode>ESP</soap:isoCode>\r\n      </soap:getPaysByCodeRequest>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/ws/pays.wsdl",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ws",
+						"pays.wsdl"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "REST - GET - /pays",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pays",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pays"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "REST - GET - /pays/esp",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/pays/esp",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pays",
+						"esp"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "REST - POST - /pays",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"isoCode\":\"DEU\",\n\t\"nom\":\"Allemagne\",\n\t\"population\":12345678,\n\t\"capitale\":\"Berlin\",\n\t\"monnaie\":\"EUR\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/pays",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pays"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SOAP addPays",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "text/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:soap=\"http://hearc.ch/springsoaprest/soap\">\r\n   <soapenv:Header/>\r\n   <soapenv:Body>\r\n      <soap:addPaysRequest>\r\n         <soap:pays>\r\n            <soap:isoCode>GER</soap:isoCode>\r\n            <soap:nom>Allemagne</soap:nom>\r\n            <soap:population>1234567</soap:population>\r\n            <soap:capitale>Berlin</soap:capitale>\r\n            <soap:monnaie>EUR</soap:monnaie>\r\n         </soap:pays>\r\n      </soap:addPaysRequest>\r\n   </soapenv:Body>\r\n</soapenv:Envelope>",
+					"options": {
+						"raw": {
+							"language": "text"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/ws/pays.wsdl",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ws",
+						"pays.wsdl"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
